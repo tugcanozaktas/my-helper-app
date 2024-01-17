@@ -1,6 +1,6 @@
 import axios from "axios";
 
-function RegisterUser(firstName, lastName, email, password) {
+function RegisterUser(firstName, lastName, email, password, setMessage, setSuccess) {
   const url = "http://localhost:3001/register";
   const body = {
     firstName: firstName,
@@ -12,10 +12,12 @@ function RegisterUser(firstName, lastName, email, password) {
   axios
     .post(url, body)
     .then((response) => {
-      console.log(response);
+      setSuccess(true)
+      setMessage("User successfully registered!")
     })
     .catch((error) => {
-      console.error(error.response.data[0].message);
+      setSuccess(false)
+      setMessage(error.response.data[0].message)
     });
 }
 

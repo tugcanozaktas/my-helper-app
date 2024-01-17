@@ -1,11 +1,13 @@
 .registration-page{
+    display: flex;
+    flex-direction: column;
     padding: 10px;
     height: 100%;
     background-color: rgba(56, 56, 56, 0.999)
 }
 
 .registration-page form{
-    height: 100%;
+    height: 500px;
     padding: 50px;
     display: flex;
     flex-direction: column;

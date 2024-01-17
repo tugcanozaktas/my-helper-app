@@ -1,6 +1,6 @@
 import axios from "axios"
 
-function Login(userName, password, setAccessToken, setUserInfo){
+function Login(userName, password, setAccessToken, setUserInfo, setMessage, setSuccess){
   const url = "http://localhost:3001/login";
   const body = {
     email: userName,
@@ -9,12 +9,12 @@ function Login(userName, password, setAccessToken, setUserInfo){
   axios
   .post(url, body)
   .then((response) => {
-    console.log(response)
     setAccessToken(response.data.accessToken);
     setUserInfo(response.data.user);
   })
   .catch((error) => {
-    console.error(error);
+    setSuccess(false)
+    setMessage(error.response.data)
   })
 }
 
